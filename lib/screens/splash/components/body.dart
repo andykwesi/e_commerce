@@ -3,8 +3,10 @@
 import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../components/default_button.dart';
+import '../../sign_in/sign_in_screen.dart';
 import 'splash_content.dart';
 
 class Body extends StatefulWidget {
@@ -67,7 +69,9 @@ class _BodyState extends State<Body> {
                     ),
                     DefaultButton(
                       text: "Continue",
-                      press: () {},
+                      press: () {
+                        Get.to(SignInScreen());
+                      },
                     ),
                     Spacer(),
                   ],

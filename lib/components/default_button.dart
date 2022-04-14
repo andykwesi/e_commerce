@@ -22,9 +22,11 @@ class DefaultButton extends StatelessWidget {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           color: kPrimaryColor,
           height: getProportionateScreenHeight(56),
-          onPressed: () {},
+          onPressed: () {
+            press();
+          },
           child: Text(
-            "Continue",
+            text,
             style: TextStyle(
                 fontSize: getProportionateScreenWidth(18), color: Colors.white),
           )),

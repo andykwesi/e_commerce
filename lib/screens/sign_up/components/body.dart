@@ -119,7 +119,7 @@ class _SignInFormState extends State<SignInForm> {
                     child: Icon(Icons.person),
                   )),
             ),
-          
+
             SizedBox(
               height: getProportionateScreenHeight(25),
             ),
@@ -150,11 +150,11 @@ class _SignInFormState extends State<SignInForm> {
                     child: Icon(Icons.email),
                   )),
             ),
-          
+
             SizedBox(
               height: getProportionateScreenHeight(25),
             ),
-          
+
             TextFormField(
               decoration: InputDecoration(
                   label: Text("Username"),
@@ -185,7 +185,7 @@ class _SignInFormState extends State<SignInForm> {
             SizedBox(
               height: getProportionateScreenHeight(25),
             ),
-          
+
             TextFormField(
               obscureText: true,
               decoration: InputDecoration(
@@ -233,9 +233,12 @@ class _SignInFormState extends State<SignInForm> {
                 ),
                 Text("Remeber Me"),
                 Spacer(),
-                Text('Forgot password', style: TextStyle(
-                  decoration: TextDecoration.underline,
-                ),),
+                Text(
+                  'Forgot password',
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
               ],
             ),
             DefaultButton(
@@ -244,41 +247,49 @@ class _SignInFormState extends State<SignInForm> {
                   // Get.to(SignInScreen());
                 }),
             // SizedBox(height: getProportionateScreenHeight(150),),
-          
+            SizedBox(
+              height: getProportionateScreenHeight(45),
+            ),
             Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   Icon(
-                      FontAwesomeIcons.google,
-                      color: Colors.red,
-                      size: 24.0,
-                      semanticLabel: 'Text to announce in accessibility modes',
-                    ),
-                    Icon(
-                      FontAwesomeIcons.facebook,
-                      color: Colors.blue,
-                      size: 24.0,
-                    ),
-                    Icon(
-                      FontAwesomeIcons.twitter,
-                      color: Colors.blue,
-                      size: 24.0,
-                    ),
-          
+                    FontAwesomeIcons.google,
+                    color: Colors.red,
+                    size: 24.0,
+                    semanticLabel: 'Text to announce in accessibility modes',
+                  ),
+                  Icon(
+                    FontAwesomeIcons.facebook,
+                    color: Colors.blue,
+                    size: 24.0,
+                  ),
+                  Icon(
+                    FontAwesomeIcons.twitter,
+                    color: Colors.blue,
+                    size: 24.0,
+                  ),
                 ],
               ),
             ),
-            SizedBox(height: getProportionateScreenHeight(20),),
+            SizedBox(
+              height: getProportionateScreenHeight(20),
+            ),
             Center(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Don't have an account?"),
-                  SizedBox(width: getProportionateScreenWidth(5),),
-                  Text('Sign Up', style: TextStyle(
-                    color: Colors.red,
-                  ),)
+                  Text("Already have an account?"),
+                  SizedBox(
+                    width: getProportionateScreenWidth(5),
+                  ),
+                  Text(
+                    'Sign in',
+                    style: TextStyle(
+                      color: Colors.red,
+                    ),
+                  )
                 ],
               ),
             ),

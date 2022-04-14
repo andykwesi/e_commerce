@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, import_of_legacy_library_into_null_safe
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
 
 import 'package:e_commerce/components/default_button.dart';
 import 'package:e_commerce/constants.dart';
@@ -152,7 +152,7 @@ class _SignInFormState extends State<SignInForm> {
 
           Container(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Icon(
                     FontAwesomeIcons.google,
@@ -182,9 +182,6 @@ class _SignInFormState extends State<SignInForm> {
                 Text("Don't have an account?"),
 
                 SizedBox(width: getProportionateScreenWidth(5),),
-                // Text('Sign Up', style: TextStyle(
-                //   color: Colors.red,
-                // ),),
 
                 // click able text
                   InkWell(
