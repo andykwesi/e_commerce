@@ -1,13 +1,18 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_unnecessary_containers
 
 import 'package:e_commerce/components/default_button.dart';
 import 'package:e_commerce/constants.dart';
+import 'package:e_commerce/controllers/login_controller.dart';
+import 'package:e_commerce/screens/homepage/homepage_screen.dart';
 import 'package:e_commerce/screens/sign_up/sign_up_screen.dart';
 import 'package:e_commerce/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -54,6 +59,9 @@ class SignInForm extends StatefulWidget {
   State<SignInForm> createState() => _SignInFormState();
 }
 
+final _userNameController = TextEditingController();
+final _passwordController = TextEditingController();
+
 class _SignInFormState extends State<SignInForm> {
   bool remember = true;
   @override
@@ -62,6 +70,7 @@ class _SignInFormState extends State<SignInForm> {
       child: Column(
         children: [
           TextFormField(
+            controller: _userNameController,
             decoration: InputDecoration(
                 label: Text("Username"),
                 hintText: "Enter your username",
@@ -138,63 +147,69 @@ class _SignInFormState extends State<SignInForm> {
               ),
               Text("Remeber Me"),
               Spacer(),
-              Text('Forgot password', style: TextStyle(
-                decoration: TextDecoration.underline,
-              ),),
+              Text(
+                'Forgot password',
+                style: TextStyle(
+                  decoration: TextDecoration.underline,
+                ),
+              ),
             ],
           ),
           DefaultButton(
               text: "Sign In",
               press: () {
-                // Get.to(SignInScreen());
+                // Get.to(login());
+                login();
               }),
-          SizedBox(height: getProportionateScreenHeight(150),),
-
+          SizedBox(
+            height: getProportionateScreenHeight(150),
+          ),
           Container(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Icon(
-                    FontAwesomeIcons.google,
-                    color: Colors.red,
-                    size: 24.0,
-                    semanticLabel: 'Text to announce in accessibility modes',
-                  ),
-                  Icon(
-                    FontAwesomeIcons.facebook,
-                    color: Colors.blue,
-                    size: 24.0,
-                  ),
-                  Icon(
-                    FontAwesomeIcons.twitter,
-                    color: Colors.blue,
-                    size: 24.0,
-                  ),
-
+                  FontAwesomeIcons.google,
+                  color: Colors.red,
+                  size: 24.0,
+                  // semanticLabel: 'Text to announce in accessibility modes',
+                ),
+                Icon(
+                  FontAwesomeIcons.facebook,
+                  color: Colors.blue,
+                  size: 24.0,
+                ),
+                Icon(
+                  FontAwesomeIcons.twitter,
+                  color: Colors.blue,
+                  size: 24.0,
+                ),
               ],
             ),
           ),
-          SizedBox(height: getProportionateScreenHeight(20),),
+          SizedBox(
+            height: getProportionateScreenHeight(20),
+          ),
           Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text("Don't have an account?"),
 
-                SizedBox(width: getProportionateScreenWidth(5),),
+                SizedBox(
+                  width: getProportionateScreenWidth(5),
+                ),
 
                 // click able text
-                  InkWell(
-                    onTap: () {
-                      Get.to(SignUpScreen());
-                    },
-                    child: Text(
-                      'Sign up',
-                      style: TextStyle(
-                        color: Colors.red
-                      ),
-                      ),
+                InkWell(
+                  onTap: () {
+                    Get.to(SignUpScreen());
+                  },
+                  child: Text(
+                    'Sign up',
+                    style: TextStyle(color: Colors.red),
                   ),
+                ),
               ],
             ),
           ),
@@ -202,4 +217,27 @@ class _SignInFormState extends State<SignInForm> {
       ),
     );
   }
+  void login() async {
+    LoginControler loginControler = Get.put(LoginControler());
+
+    context.loaderOverlay.show();
+
+    try {
+      final response = await loginControler.login(_userNameController.text, _passwordController.text);
+      if (response != null){
+        loginControler.loginResponse.value = response;
+        context.loaderOverlay.hide();
+
+        Get.to(HomePageScreen());
+      }
+    } on PlatformException catch (e) {
+      context.loaderOverlay.hide();
+
+      Get.snackbar("Error", "Incorrect credential");
+    } finally {
+      context.loaderOverlay.hide();
+    }
+  }
+
 }
+
