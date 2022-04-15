@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       ),
       overlayOpacity: 0.4,
       child: GetMaterialApp(
-        title: 'Flutter Demo',
+        title: 'Team Shop App',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,

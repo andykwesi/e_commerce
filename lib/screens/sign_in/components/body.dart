@@ -200,7 +200,7 @@ class _SignInFormState extends State<SignInForm> {
                   width: getProportionateScreenWidth(5),
                 ),
 
-                // click able text
+                // clickable text
                 InkWell(
                   onTap: () {
                     Get.to(SignUpScreen());

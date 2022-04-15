@@ -2,10 +2,13 @@
 
 import 'package:e_commerce/components/default_button.dart';
 import 'package:e_commerce/constants.dart';
+import 'package:e_commerce/screens/sign_in/sign_in_screen.dart';
+import 'package:e_commerce/screens/sign_up/sign_up_screen.dart';
 import 'package:e_commerce/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -217,38 +220,15 @@ class _SignInFormState extends State<SignInForm> {
             SizedBox(
               height: getProportionateScreenHeight(25),
             ),
-            Row(
-              children: [
-                Column(
-                  children: [
-                    Checkbox(
-                        value: remember,
-                        activeColor: kPrimaryColor,
-                        onChanged: (value) {
-                          setState(() {
-                            remember = value!;
-                          });
-                        }),
-                  ],
-                ),
-                Text("Remeber Me"),
-                Spacer(),
-                Text(
-                  'Forgot password',
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ],
-            ),
+            
             DefaultButton(
-                text: "Sign In",
+                text: "Sign up",
                 press: () {
-                  // Get.to(SignInScreen());
+                  Get.to(SignInScreen());
                 }),
             // SizedBox(height: getProportionateScreenHeight(150),),
             SizedBox(
-              height: getProportionateScreenHeight(45),
+              height: getProportionateScreenHeight(65),
             ),
             Container(
               child: Row(
@@ -284,12 +264,16 @@ class _SignInFormState extends State<SignInForm> {
                   SizedBox(
                     width: getProportionateScreenWidth(5),
                   ),
-                  Text(
+
+                  InkWell(
+                  onTap: () {
+                    Get.to(SignInScreen());
+                  },
+                  child: Text(
                     'Sign in',
-                    style: TextStyle(
-                      color: Colors.red,
-                    ),
-                  )
+                    style: TextStyle(color: Colors.red),
+                  ),
+                ),
                 ],
               ),
             ),
