@@ -158,7 +158,6 @@ class _SignInFormState extends State<SignInForm> {
           DefaultButton(
               text: "Sign In",
               press: () {
-                // Get.to(login());
                 login();
               }),
           SizedBox(
@@ -199,7 +198,6 @@ class _SignInFormState extends State<SignInForm> {
                 SizedBox(
                   width: getProportionateScreenWidth(5),
                 ),
-
                 // clickable text
                 InkWell(
                   onTap: () {
