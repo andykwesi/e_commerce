@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, unused_import
+
 import 'package:e_commerce/components/custom_navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

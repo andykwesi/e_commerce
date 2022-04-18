@@ -1,3 +1,5 @@
+// ignore_for_file: use_rethrow_when_possible
+
 import 'package:e_commerce/models/login_response_model.dart';
 import 'package:e_commerce/services/authentication.dart';
 import 'package:get/get.dart';
